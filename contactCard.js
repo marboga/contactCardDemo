@@ -16,7 +16,9 @@ $(document).ready(function() {
     e.preventDefault();
     console.log("e", e);
     console.log(this);
-    var fn = $("input[name='first_name']").val();
+    //you can use id
+    var fn = $("#first_name").val();
+    //or you can select by tag and attribute value
     var ln = $("input[name='last_name']").val();
     var desc = $("textarea[name='description']").val();
     generateCard(fn, ln, desc)
