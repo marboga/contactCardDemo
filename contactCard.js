@@ -1,4 +1,5 @@
 function generateCard(fname, lname, desc) {
+  console.log("generating card", fname, lname, desc);
   var card =  `
     <div class="card">
       <h2>`+ fname +` `+ lname +`</h2>
@@ -30,5 +31,14 @@ $(document).ready(function() {
     $(this).children().toggle()
   })
 
+  $("form.githubForm").submit(function(e) {
+    e.preventDefault()
+    console.log(e.target.childNodes);
+    let username = $("#username").val()
+    $.get("https://api.github.com/users/" + username , function(data) {
+      console.log(data);
+      generateCard(data.login, data.name, data.bio)
+    })
+  })
 
 })
